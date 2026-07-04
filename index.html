@@ -24,7 +24,8 @@
       --safe-bottom:env(safe-area-inset-bottom,0px);
     }
     *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-    html{scroll-behavior:smooth}
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+    img{max-width:100%;height:auto;display:block}
     body{
       margin:0;min-height:100vh;color:var(--text);
       font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
@@ -33,7 +34,7 @@
         radial-gradient(circle at 15% 10%, rgba(37, 99, 235, 0.15) 0, transparent 40%),
         radial-gradient(circle at 85% 30%, rgba(245, 158, 11, 0.1) 0, transparent 40%),
         radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.05) 0, transparent 50%);
-      overflow-x:hidden;padding-bottom:86px;
+      overflow-x:hidden;padding-bottom:86px;overscroll-behavior-y:contain;touch-action:manipulation;
       -webkit-font-smoothing: antialiased;
     }
     body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(to bottom,rgba(0,0,0,1),rgba(0,0,0,.2) 60%,transparent 100%)}
@@ -58,7 +59,7 @@
     .icon-box img, .product-icon img, .app-icon img, .modal-big-icon img {width:100%;height:100%;object-fit:contain;border-radius:inherit}
     
     .modal-backdrop{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.75);padding:24px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}.modal-backdrop.active{display:flex}.modal{width:min(1020px,100%);max-height:calc(100vh - 48px);overflow:auto;border-radius:24px;background:var(--bg);border:1px solid var(--line2);box-shadow:0 40px 100px rgba(0,0,0,.6);animation:modalIn .25s cubic-bezier(0.16, 1, 0.3, 1)}@keyframes modalIn{from{opacity:0;transform:translateY(24px) scale(.98)}to{opacity:1;transform:none}}.modal-head{position:sticky;top:0;z-index:2;display:grid;grid-template-columns:86px 1fr 44px;gap:16px;align-items:center;padding:20px;background:rgba(3, 7, 18, 0.85);border-bottom:1px solid var(--line);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}.modal-logo{width:86px;height:86px;border-radius:20px;background:#0f172a;display:grid;place-items:center;overflow:hidden;box-shadow:inset 0 0 0 1px var(--line);padding:10px}.modal-title h3{margin:0;font-size:30px;line-height:1.1;letter-spacing:-.03em;font-weight:800}.modal-sub{margin-top:6px;color:#94a3b8;font-size:14px;font-weight:500}.close{width:44px;height:44px;border-radius:50%;background:var(--card);border:1px solid var(--line);font-size:24px;color:#cbd5e1;transition:.2s}.close:hover{background:var(--cardHover);color:#fff}.modal-body{display:grid;grid-template-columns:320px 1fr;gap:24px;padding:24px}.modal-preview{border-radius:20px;background:var(--card);border:1px solid var(--line);padding:20px;display:flex;flex-direction:column;gap:16px;height:fit-content}.modal-big-icon{width:200px;height:200px;border-radius:30px;margin:0 auto;display:grid;place-items:center;overflow:hidden;background:#0f172a;box-shadow:inset 0 0 0 1px var(--line),0 20px 40px rgba(0,0,0,.3);padding:24px}.modal-desc{margin:0;color:#cbd5e1;line-height:1.6;font-size:14.5px}.plans-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 12px}.eyebrow{color:var(--gold);font-size:12px;text-transform:uppercase;letter-spacing:.15em;font-weight:800}.tag{display:inline-flex;align-items:center;min-height:28px;border-radius:99px;border:1px solid var(--line);background:var(--card);padding:0 12px;font-size:12px;font-weight:600;color:#cbd5e1}.plans-grid{display:grid;gap:10px}.plan-option{display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;text-align:left;border-radius:16px;border:1px solid var(--line);background:var(--card);padding:14px;transition:.2s ease}.plan-option:hover,.plan-option.active{background:rgba(37,99,235,0.1);border-color:rgba(37,99,235,0.4)}.plan-option.unavailable{opacity:.6}.plan-name{display:block;font-size:15px;font-weight:700;color:#f8fafc}.plan-note{display:block;color:#94a3b8;line-height:1.4;font-size:13px;margin-top:6px}.plan-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.meta{border:1px solid var(--line);background:rgba(15,23,42,0.6);border-radius:6px;color:#cbd5e1;padding:4px 8px;font-size:11.5px;font-weight:500}.plan-price{color:var(--gold-hover);font-size:17px;font-weight:800;white-space:nowrap}.checkout-form{margin-top:20px;border-radius:20px;border:1px solid rgba(37,99,235,0.25);background:rgba(37,99,235,0.06);padding:20px}.checkout-title{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}.checkout-title b{font-size:17px;color:#f8fafc}.bank-badge{border:1px solid var(--line2);background:var(--card);border-radius:8px;padding:8px 12px;font-size:12.5px;font-weight:700;white-space:nowrap}.selected-box{border-radius:14px;border:1px solid var(--line2);background:var(--bg);padding:14px;color:#cbd5e1;line-height:1.6;font-size:14px;margin-bottom:16px}.selected-box b{color:white}.customer-fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}.customer-fields label{display:grid;gap:8px;color:#94a3b8;font-size:13.5px;font-weight:600}.customer-fields input{height:50px;border:1px solid var(--line2);background:var(--bg);color:white;border-radius:12px;outline:0;padding:0 16px;font-size:14.5px;transition:.2s}.customer-fields input:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(37,99,235,0.15)}.checkout-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}.payment-error{display:none;margin-top:14px;border-radius:12px;border:1px solid rgba(248,113,113,0.3);background:rgba(248,113,113,0.1);color:#fca5a5;padding:12px 14px;line-height:1.5;font-size:14px}.payment-result{display:none;margin-top:16px}.payment-result.active{display:block}.qr-box{display:grid;grid-template-columns:210px 1fr;gap:20px;align-items:center;border-radius:16px;border:1px solid var(--line2);background:var(--bg);padding:16px}.qr{width:200px;height:200px;border-radius:16px;background:white;padding:12px;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.2)}.qr img{width:100%;height:100%;object-fit:contain}.waiting{display:inline-flex;align-items:center;gap:10px;color:var(--gold-hover);background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2);padding:8px 14px;border-radius:99px;font-weight:700;font-size:13.5px}.pulse-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 0 rgba(245,158,11,0.5);animation:pulse 1.5s infinite}@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(245,158,11,0)}100%{box-shadow:0 0 0 0 rgba(245,158,11,0)}}.payment-info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}.payment-info{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:12px}.payment-info span{display:block;color:#64748b;text-transform:uppercase;letter-spacing:.08em;font-size:10.5px;font-weight:700;margin-bottom:6px}.payment-info b{word-break:break-word;font-size:14px;color:#f8fafc}.toast{position:fixed;left:50%;bottom:calc(88px + var(--safe-bottom));transform:translateX(-50%) translateY(20px);z-index:200;opacity:0;pointer-events:none;background:#f8fafc;color:#0f172a;border-radius:99px;padding:12px 20px;font-weight:700;font-size:14px;box-shadow:0 16px 40px rgba(0,0,0,.3);transition:.25s cubic-bezier(0.16, 1, 0.3, 1)}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-    .music-player{position:fixed;right:20px;bottom:calc(80px + var(--safe-bottom));z-index:45;width:min(340px,calc(100vw - 40px));height:64px;border-radius:14px;background:rgba(15,23,42,0.85);border:1px solid var(--line2);box-shadow:var(--shadow);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:grid;grid-template-columns:46px 1fr 90px;align-items:center;gap:12px;padding:8px 12px}.player-disc{width:42px;height:42px;border-radius:10px;background:var(--card);display:grid;place-items:center;color:#94a3b8;font-size:22px}.player-disc.spin{animation:spin 4s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.player-info{min-width:0}.track-title{font-size:13.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#f8fafc}.track-artist{margin-top:4px;color:#94a3b8;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.player-hint,.player-kicker{display:none}.player-controls{display:flex;align-items:center;justify-content:flex-end;gap:6px}.player-btn{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;color:#cbd5e1;font-size:14px;transition:.2s}.player-btn:hover{background:var(--cardHover);color:#fff}.player-btn.main{background:transparent;font-size:18px;color:#fff}.bottom-nav{position:fixed;left:0;right:0;bottom:0;z-index:42;height:66px;padding-bottom:var(--safe-bottom);background:rgba(3,7,18,0.85);border-top:1px solid var(--line2);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:grid;place-items:center}.bottom-nav-inner{width:min(760px,100%);display:grid;grid-template-columns:repeat(4,1fr);height:66px}.tab{display:grid;place-items:center;color:#64748b;font-size:12px;font-weight:600;transition:.2s}.tab:hover{color:#cbd5e1}.tab b{display:block;font-size:22px;line-height:1;margin-bottom:4px;color:var(--gold)}.tab.active{color:#f8fafc}footer{color:#64748b;text-align:center;font-size:13px;padding:20px 12px 40px}.hide{display:none!important}
+    .music-player{position:fixed;right:20px;bottom:calc(80px + var(--safe-bottom));z-index:45;width:min(340px,calc(100vw - 40px));height:64px;border-radius:14px;background:rgba(15,23,42,0.85);border:1px solid var(--line2);box-shadow:var(--shadow);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:grid;grid-template-columns:46px 1fr 90px;align-items:center;gap:12px;padding:8px 12px}.player-disc{width:42px;height:42px;border-radius:10px;background:var(--card);display:grid;place-items:center;color:#94a3b8;font-size:22px}.player-disc.spin{animation:spin 4s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.player-info{min-width:0}.track-title{font-size:13.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#f8fafc}.track-artist{margin-top:4px;color:#94a3b8;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.player-hint,.player-kicker{display:none}.player-controls{display:flex;align-items:center;justify-content:flex-end;gap:6px}.player-btn{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;color:#cbd5e1;font-size:14px;transition:.2s}.player-btn:hover{background:var(--cardHover);color:#fff}.player-btn.main{background:transparent;font-size:18px;color:#fff}.promo-banner{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:22px 24px;border-radius:20px;margin:0 0 24px}.promo-banner h3{margin:6px 0 6px;font-size:22px;letter-spacing:-.02em}.promo-banner p{margin:0;color:#cbd5e1;line-height:1.6}.benefits-section,.order-section{padding:0 0 60px}.benefit-grid,.order-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:18px}.benefit-card,.order-step{padding:20px;border-radius:18px;background:var(--card);border:1px solid var(--line);box-shadow:0 10px 24px rgba(0,0,0,.15)}.benefit-icon,.step-number{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(245,158,11,0.16);color:var(--gold-hover);font-size:20px;font-weight:800;margin-bottom:12px}.benefit-card h4,.order-step h4{margin:0 0 8px;font-size:16px}.benefit-card p,.order-step p{margin:0;color:#cbd5e1;line-height:1.6;font-size:14px}.mobile-cta{position:fixed;left:12px;right:12px;bottom:calc(76px + var(--safe-bottom));z-index:41;display:none;gap:10px}.mobile-cta-btn{flex:1;height:46px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:14px;border:1px solid var(--line2);background:rgba(15,23,42,0.9);color:#f8fafc;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}.mobile-cta-btn.main{background:linear-gradient(135deg,var(--gold),#d97706);color:#0f172a;border-color:transparent}.bottom-nav{position:fixed;left:0;right:0;bottom:0;z-index:42;height:66px;padding-bottom:var(--safe-bottom);background:rgba(3,7,18,0.85);border-top:1px solid var(--line2);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:grid;place-items:center}.bottom-nav-inner{width:min(760px,100%);display:grid;grid-template-columns:repeat(4,1fr);height:66px}.tab{display:grid;place-items:center;color:#64748b;font-size:12px;font-weight:600;transition:.2s}.tab:hover{color:#cbd5e1}.tab b{display:block;font-size:22px;line-height:1;margin-bottom:4px;color:var(--gold)}.tab.active{color:#f8fafc}footer{color:#64748b;text-align:center;font-size:13px;padding:20px 12px 40px}.hide{display:none!important}
     
     @media (max-width:1280px){.container{width:min(1180px,calc(100% - 56px))}.product-grid{grid-template-columns:repeat(4,1fr)}.stats-bar{width:min(760px,68vw)}}
     @media (max-width:1080px){.hero-inner{grid-template-columns:1fr 280px;gap:24px}}
@@ -67,7 +68,7 @@
       .hero{padding:50px 0 24px}.hero-inner{grid-template-columns:1fr}.featured-panel{display:none}.stats-bar{width:100%;margin-top:40px}
       .section-row{display:grid;gap:14px}.section-title{display:grid;gap:12px}.search-wrap{width:100%}.filters{overflow:hidden}
       .product-grid{grid-template-columns:repeat(3,1fr)}.modal-body{grid-template-columns:1fr}.modal-preview{flex-direction:row;align-items:center}.modal-big-icon{width:140px;height:140px;margin:0}
-      .music-player{left:16px;right:16px;bottom:calc(76px + var(--safe-bottom));width:auto}.bottom-nav{height:72px}.bottom-nav-inner{height:72px}.toast{bottom:calc(150px + var(--safe-bottom))}
+      .music-player{left:16px;right:16px;bottom:calc(76px + var(--safe-bottom));width:auto}.promo-banner{flex-direction:column;align-items:flex-start}.benefit-grid,.order-grid{grid-template-columns:1fr}.mobile-cta{display:flex}.bottom-nav{height:72px}.bottom-nav-inner{height:72px}.toast{bottom:calc(150px + var(--safe-bottom))}
     }
     @media (max-width:700px){
       .container{width:min(100% - 24px,680px)}.nav{height:56px}.brand-title{font-size:18px}.top-btn{min-width:auto;height:34px;padding:0 14px}
@@ -91,7 +92,7 @@
       </a>
       <div class="nav-center">Chọn gói · Tạo QR · Gửi Zalo</div>
       <div class="nav-actions">
-        <a class="top-btn zalo" href="https://zalo.me/0565713736" target="_blank" rel="noopener">Zalo</a>
+        <a class="top-btn zalo" href="https://zalo.me/0559939036" target="_blank" rel="noopener">Zalo</a>
         <button class="top-btn playlist" type="button" id="playlistTopBtn">Playlist</button>
       </div>
     </div>
@@ -106,7 +107,7 @@
             <p class="lead">Cửa hàng dịch vụ số, tài khoản Premium, công cụ học tập và AI. Chọn gói nhanh, tạo QR thanh toán và gửi đơn qua Zalo.</p>
             <div class="hero-actions">
               <a class="btn btn-main" href="#products">Xem sản phẩm</a>
-              <a class="btn btn-ghost" href="https://zalo.me/0565713736" target="_blank" rel="noopener">Tư vấn</a>
+              <a class="btn btn-ghost" href="https://zalo.me/0559939036" target="_blank" rel="noopener">Tư vấn</a>
             </div>
           </div>
           <div class="stats-bar glass" aria-label="Thống kê shop">
@@ -119,6 +120,59 @@
           <h3>Sản phẩm nổi bật</h3>
           <div id="featuredGrid" class="featured-grid"></div>
         </aside>
+      </div>
+    </section>
+
+    <section class="container benefits-section">
+      <div class="promo-banner glass">
+        <div>
+          <div class="eyebrow">Bán hàng chuyên nghiệp, hỗ trợ nhanh</div>
+          <h3>Chọn gói phù hợp, thanh toán dễ dàng và nhận tư vấn trực tiếp qua Zalo.</h3>
+          <p>Shopmanhgold tập trung vào trải nghiệm mua hàng rõ ràng, minh bạch và nhanh chóng cho khách hàng.</p>
+        </div>
+        <a class="btn btn-main" href="https://zalo.me/0559939036" target="_blank" rel="noopener">Liên hệ ngay</a>
+      </div>
+      <div class="benefit-grid">
+        <article class="benefit-card">
+          <div class="benefit-icon">⚡</div>
+          <h4>Phản hồi nhanh</h4>
+          <p>Hỗ trợ tư vấn và xử lý đơn hàng nhanh chóng, giúp khách hàng không mất thời gian chờ đợi.</p>
+        </article>
+        <article class="benefit-card">
+          <div class="benefit-icon">🛡️</div>
+          <h4>Uy tín & minh bạch</h4>
+          <p>Thông tin gói dịch vụ, giá và quy trình thanh toán được trình bày rõ ràng trước khi mua.</p>
+        </article>
+        <article class="benefit-card">
+          <div class="benefit-icon">💳</div>
+          <h4>Thanh toán tiện lợi</h4>
+          <p>Hỗ trợ tạo QR thanh toán nhanh, dễ dùng trên cả điện thoại và máy tính.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container order-section">
+      <div class="section-row">
+        <div class="section-title">
+          <h2>Đặt hàng chỉ với 3 bước</h2>
+        </div>
+      </div>
+      <div class="order-grid">
+        <article class="order-step">
+          <div class="step-number">1</div>
+          <h4>Chọn sản phẩm</h4>
+          <p>Chọn gói phù hợp với nhu cầu sử dụng, xem thông tin chi tiết và thời hạn.</p>
+        </article>
+        <article class="order-step">
+          <div class="step-number">2</div>
+          <h4>Nhập thông tin</h4>
+          <p>Điền họ tên và số điện thoại để shop chuẩn bị đơn hàng và tạo QR thanh toán.</p>
+        </article>
+        <article class="order-step">
+          <div class="step-number">3</div>
+          <h4>Xác nhận & nhận dịch vụ</h4>
+          <p>Thanh toán xong, khách hàng chỉ cần xác nhận và chờ shop xử lý đơn hàng.</p>
+        </article>
       </div>
     </section>
 
@@ -159,15 +213,20 @@
       <button id="playPauseBtn" class="player-btn main" type="button" aria-label="Phát hoặc dừng">▶</button>
       <button id="nextTrackBtn" class="player-btn" type="button" aria-label="Bài tiếp theo">›</button>
     </div>
-    <audio id="audioPlayer" preload="metadata"></audio>
+    <audio id="audioPlayer" preload="metadata" autoplay muted></audio>
+  </div>
+
+  <div class="mobile-cta" aria-label="Tác vụ nhanh">
+    <a class="mobile-cta-btn main" href="https://zalo.me/0559939036" target="_blank" rel="noopener">💬 Zalo</a>
+    <a class="mobile-cta-btn" href="#products">🛍️ Xem hàng</a>
   </div>
 
   <nav class="bottom-nav" aria-label="Thanh điều hướng nhanh">
     <div class="bottom-nav-inner">
       <a class="tab active" href="#products"><span><b>⌂</b>Sản phẩm</span></a>
       <a class="tab" href="#products" id="categoryTab"><span><b>☷</b>Danh mục</span></a>
-      <a class="tab" href="https://zalo.me/0565713736" target="_blank" rel="noopener"><span><b>ⓩ</b>Zalo</span></a>
-      <a class="tab" href="tel:0565713736"><span><b>♧</b>Liên hệ</span></a>
+      <a class="tab" href="https://zalo.me/0559939036" target="_blank" rel="noopener"><span><b>ⓩ</b>Zalo</span></a>
+      <a class="tab" href="https://zalo.me/g/nklulq502"><span><b>♧</b>Nhóm Zalo</span></a>
     </div>
   </nav>
 
@@ -209,8 +268,8 @@
               <div class="qr-box">
                 <div class="qr"><img id="qrImage" src="" alt="QR thanh toán VietQR"></div>
                 <div>
-                  <div class="waiting"><span class="pulse-dot"></span> Đang chờ khách chuyển khoản</div>
-                  <p class="modal-desc" style="margin-top:12px">Khách quét QR bằng app ngân hàng. Sau khi chuyển khoản xong, bấm “Tôi đã chuyển khoản” để copy mã đơn và gửi thông tin qua Zalo.</p>
+                  <div id="paymentStatusBadge" class="waiting"><span class="pulse-dot"></span> Đang chờ khách chuyển khoản</div>
+                  <p id="paymentNote" class="modal-desc" style="margin-top:12px">Khách quét QR bằng app ngân hàng. Sau khi chuyển khoản xong, bấm “Tôi đã chuyển khoản” để copy đơn hàng và gửi ghi chú qua Zalo.</p>
                   <div class="payment-info-grid">
                     <div class="payment-info"><span>Số tiền</span><b id="paymentAmount">-</b></div>
                     <div class="payment-info"><span>Nội dung CK</span><b id="paymentContent">-</b></div>
@@ -311,7 +370,7 @@
       totalProducts: $("totalProducts"), totalPlans: $("totalPlans"), resultCount: $("resultCount"),
       featuredGrid: $("featuredGrid"), quickRail: $("quickRail"), productGroups: $("productGroups"), empty: $("empty"),
       chips: $("chips"), categoryFilter: $("categoryFilter"), stockFilter: $("stockFilter"), searchInput: $("searchInput"), railNext: $("railNext"),
-      productModal: $("productModal"), modalSheet: $("modalSheet"), modalLogo: $("modalLogo"), modalTitle: $("modalTitle"), modalSub: $("modalSub"), modalProductImage: $("modalProductImage"), modalDesc: $("modalDesc"), modalPlanCount: $("modalPlanCount"), modalPlans: $("modalPlans"), selectedPlanBox: $("selectedPlanBox"), checkoutForm: $("checkoutForm"), customerName: $("customerName"), customerPhone: $("customerPhone"), createQrBtn: $("createQrBtn"), zaloGeneral: $("zaloGeneral"), paymentError: $("paymentError"), paymentResult: $("paymentResult"), qrImage: $("qrImage"), paymentAmount: $("paymentAmount"), paymentContent: $("paymentContent"), paymentPhone: $("paymentPhone"), paymentOrderCode: $("paymentOrderCode"), copyPaymentBtn: $("copyPaymentBtn"), copyOrderBtn: $("copyOrderBtn"), confirmPaymentBtn: $("confirmPaymentBtn"),
+      productModal: $("productModal"), modalSheet: $("modalSheet"), modalLogo: $("modalLogo"), modalTitle: $("modalTitle"), modalSub: $("modalSub"), modalProductImage: $("modalProductImage"), modalDesc: $("modalDesc"), modalPlanCount: $("modalPlanCount"), modalPlans: $("modalPlans"), selectedPlanBox: $("selectedPlanBox"), checkoutForm: $("checkoutForm"), customerName: $("customerName"), customerPhone: $("customerPhone"), createQrBtn: $("createQrBtn"), zaloGeneral: $("zaloGeneral"), paymentError: $("paymentError"), paymentResult: $("paymentResult"), qrImage: $("qrImage"), paymentAmount: $("paymentAmount"), paymentContent: $("paymentContent"), paymentPhone: $("paymentPhone"), paymentOrderCode: $("paymentOrderCode"), paymentNote: $("paymentNote"), paymentStatusBadge: $("paymentStatusBadge"), copyPaymentBtn: $("copyPaymentBtn"), copyOrderBtn: $("copyOrderBtn"), confirmPaymentBtn: $("confirmPaymentBtn"),
       playerDisc: $("playerDisc"), audioPlayer: $("audioPlayer"), trackTitle: $("trackTitle"), trackArtist: $("trackArtist"), playerHint: $("playerHint"), playPauseBtn: $("playPauseBtn"), prevTrackBtn: $("prevTrackBtn"), nextTrackBtn: $("nextTrackBtn"), playlistTopBtn: $("playlistTopBtn"), categoryTab: $("categoryTab")
     };
     let productGroupsData = [];
@@ -585,6 +644,9 @@
       lastPaymentAmount="";
       lastOrderCode="";
       if(els.paymentOrderCode) els.paymentOrderCode.textContent="-";
+      if(els.paymentNote) els.paymentNote.textContent="Khách quét QR bằng app ngân hàng. Sau khi chuyển khoản xong, bấm “Tôi đã chuyển khoản” để copy đơn hàng và gửi ghi chú qua Zalo.";
+      if(els.paymentStatusBadge) els.paymentStatusBadge.innerHTML='<span class="pulse-dot"></span> Đang chờ khách chuyển khoản';
+      if(els.confirmPaymentBtn) els.confirmPaymentBtn.textContent="Tôi đã chuyển khoản";
     }
     function normalizeCustomerName(value){return String(value||"").trim().replace(/\s+/g," ")}
     function normalizePhone(value){return String(value||"").replace(/[^0-9]/g,"")}
@@ -613,16 +675,28 @@
       const accountName = bankAccountName ? "&accountName=" + encodeURIComponent(bankAccountName) : "";
       return `https://img.vietqr.io/image/${bankId}-${bankAccountNo}-compact2.png?amount=${encodeURIComponent(amount)}&addInfo=${encodeURIComponent(content)}${accountName}`;
     }
-    function createZaloOrderLink(hasPayment,confirmed=false){
+    function getOrderText(confirmed=false){
       const name=normalizeCustomerName(els.customerName.value);
       const phone=normalizePhone(els.customerPhone.value);
-      let text="Xin chào shop, tôi muốn tư vấn sản phẩm: "+(selectedGroup?.name||"");
-      if(selectedGroup && selectedPlan){
-        text=`Tôi muốn mua: ${selectedGroup.name} | Gói: ${selectedPlan.variant || selectedPlan.duration || ""} | Giá: ${selectedPlan.price || "Liên hệ"} | Họ tên: ${name || ""} | SĐT: ${phone || ""}`;
+      const lines=[];
+      lines.push(confirmed ? "Xin chào shop, tôi đã chuyển khoản. Shop kiểm tra và xử lý đơn giúp mình." : "Xin chào shop, tôi muốn đặt đơn hàng này.");
+      if(lastOrderCode) lines.push("Mã đơn hàng: " + lastOrderCode);
+      if(selectedGroup) lines.push("Sản phẩm: " + selectedGroup.name);
+      if(selectedPlan){
+        lines.push("Gói: " + (selectedPlan.variant || selectedPlan.duration || ""));
+        lines.push("Thời hạn: " + (selectedPlan.duration || "Liên hệ"));
+        lines.push("Giá: " + (selectedPlan.price || "Liên hệ"));
       }
-      if(lastOrderCode) text += ` | Mã đơn: ${lastOrderCode}`;
-      if(hasPayment && lastPaymentContent && lastPaymentAmount) text += ` | Nội dung CK: ${lastPaymentContent} | Số tiền: ${Number(lastPaymentAmount).toLocaleString("vi-VN")}đ`;
-      if(confirmed) text += " | Trạng thái: Tôi đã chuyển khoản, shop vui lòng kiểm tra giúp.";
+      lines.push("Họ tên: " + (name || ""));
+      lines.push("SĐT: " + (phone || ""));
+      if(lastPaymentAmount) lines.push("Số tiền chuyển khoản: " + Number(lastPaymentAmount).toLocaleString("vi-VN") + " đ");
+      if(lastPaymentContent) lines.push("Nội dung chuyển khoản: " + lastPaymentContent);
+      lines.push("Tài khoản nhận: Vietcombank " + bankAccountNo + " - " + bankAccountName);
+      lines.push("Ghi chú: " + (confirmed ? "Khách đã bấm xác nhận đã chuyển khoản trên website. Shop vui lòng kiểm tra giao dịch theo mã đơn và nội dung chuyển khoản." : "Khách đang tạo đơn từ website shopmanhgold."));
+      return lines.filter(Boolean).join("\n");
+    }
+    function createZaloOrderLink(hasPayment,confirmed=false){
+      const text=getOrderText(confirmed && hasPayment);
       return zaloLink+"?text="+encodeURIComponent(text);
     }
     function generatePaymentQr(){
@@ -648,22 +722,22 @@
     function copyPaymentContent(){if(!lastPaymentContent)return showPaymentError("Bạn cần tạo QR trước khi copy nội dung chuyển khoản.");copyText(lastPaymentContent,"Đã copy nội dung CK")}
     function copyOrder(){
       if(!selectedGroup)return;
-      let text="Sản phẩm: "+selectedGroup.name+" | Zalo: "+zaloPhone;
-      if(selectedPlan) text=`Sản phẩm: ${selectedGroup.name} | Gói: ${selectedPlan.variant || selectedPlan.duration || ""} | Giá: ${selectedPlan.price || "Liên hệ"} | STK nhận: Vietcombank 1046049037`;
-      if(lastOrderCode) text += ` | Mã đơn: ${lastOrderCode}`;
-      if(lastPaymentContent && lastPaymentAmount) text += ` | Số tiền: ${Number(lastPaymentAmount).toLocaleString("vi-VN")}đ | Nội dung CK: ${lastPaymentContent}`;
-      copyText(text,"Đã copy đơn hàng");
+      copyText(getOrderText(false),"Đã copy đơn hàng");
     }
     async function confirmPayment(){
       if(!lastPaymentContent || !lastPaymentAmount || !lastOrderCode){
         return showPaymentError("Bạn cần tạo QR thanh toán trước, sau đó mới bấm xác nhận đã chuyển khoản.");
       }
+      const orderText=getOrderText(true);
       try{
-        await navigator.clipboard.writeText(lastOrderCode);
-        toast("Đã copy mã đơn hàng");
+        await navigator.clipboard.writeText(orderText);
+        toast("Đã copy đơn hàng, đang mở Zalo");
       }catch(err){
-        window.prompt("Copy mã đơn hàng:",lastOrderCode);
+        window.prompt("Copy đơn hàng này:",orderText);
       }
+      if(els.confirmPaymentBtn) els.confirmPaymentBtn.textContent="Đã copy đơn hàng ✓";
+      if(els.paymentStatusBadge) els.paymentStatusBadge.innerHTML='<span class="pulse-dot"></span> Đã bấm xác nhận chuyển khoản';
+      if(els.paymentNote) els.paymentNote.textContent="Đơn hàng đã được copy. Zalo sẽ mở kèm ghi chú: khách đã chuyển khoản, shop vui lòng kiểm tra giao dịch và xử lý đơn.";
       const url=createZaloOrderLink(true,true);
       const opened=window.open(url,"_blank","noopener");
       if(!opened) window.location.href=url;
@@ -672,36 +746,12 @@
     function vibrate(ms){if(navigator.vibrate) navigator.vibrate(ms)}
 
    const playlist=[
-  {
-    title:"Gặp Lại",
-    artist:"Binz ft. SOOBIN",
-    src:"music/Em.mp3"
-  },
-  {
-    title:"Buông",
-    artist:"HNGLE / hưng lê",
-    src:"music/Hngle - Buông Official Music Video - HNGLE _ hưng lê.mp3"
-  },
-  {
-    title:"Tìm em ft. Bảo Anh",
-    artist:"HNGLE / hưng lê",
-    src:"music/Hngle - Tìm em ft. Bảo Anh Official Music Video - HNGLE _ hưng lê.mp3"
-  },
-  {
-    title:"Ngày Rời Chuyến Bay",
-    artist:"Minh Huy ft Pinny",
-    src:"music/Minh Huy - Ngày Rời Chuyến Bay ft Pinny ( Official Music Video ) - Minh Huy Official.mp3"
-  },
-  {
-    title:"Trước Khi Em Tồn Tại",
-    artist:"Thắng Việt Anh Cover / Trạm Cảm Xúc",
-    src:"music/Trước Khi Em Tồn Tại (Piano Version) - Thắng Việt Anh Cover (MV Lyric) - Trạm Cảm Xúc.mp3"
-  },
-  {
-    title:"Vết Thương",
-    artist:"fishy",
-    src:"music/fishy - VẾT THƯƠNG - OFFICIAL MUSIC VIDEO - fishy.mp3"
-  }
+  { title:"Em", artist:"Binz ft. SOOBIN", src:"music/07. Em - Binz (feat. SOOBIN)  Gặp Lại Album - Binz Da Poet.mp3" },
+  { title:"Buông", artist:"HNGLE / hưng lê", src:"music/Hngle - Buông  Official Music Video - HNGLE _ hưng lê.mp3" },
+  { title:"Tìm em ft. Bảo Anh", artist:"HNGLE / hưng lê", src:"music/Hngle - Tìm em ft. Bảo Anh  Official Music Video - HNGLE _ hưng lê.mp3" },
+  { title:"Ngày Rời Chuyến Bay", artist:"Minh Huy ft Pinny", src:"music/Minh Huy - Ngày Rời Chuyến Bay ft Pinny ( Official Music Video ) - Minh Huy Official.mp3" },
+  { title:"Trước Khi Em Tồn Tại", artist:"Thắng Việt Anh Cover / Trạm Cảm Xúc", src:"music/Trước Khi Em Tồn Tại (Piano Version) - Thắng  Việt Anh Cover (MV Lyric) - Trạm Cảm Xúc.mp3" },
+  { title:"Vết Thương", artist:"fishy", src:"music/fishy - VẾT THƯƠNG - OFFICIAL MUSIC VIDEO - fishy.mp3" }
 ];
     let currentTrackIndex=0,isPlaying=false;
     function updatePlayerUI(){const t=playlist[currentTrackIndex]||{};els.trackTitle.textContent=t.title||"Chưa có bài hát";els.trackArtist.textContent=t.artist||"";els.playPauseBtn.textContent=isPlaying?"❚❚":"▶";els.playerDisc.classList.toggle("spin",isPlaying)}
@@ -743,10 +793,20 @@
       renderStats();
       renderFeatured();
       renderProducts();
-      loadTrack(0,false);
+      const isTouchDevice = window.matchMedia("(pointer: coarse)").matches || "ontouchstart" in window;
+      if(isTouchDevice){
+        const startPlaybackOnFirstInteraction = () => {
+          loadTrack(0,true);
+          window.removeEventListener("pointerdown", startPlaybackOnFirstInteraction);
+          window.removeEventListener("keydown", startPlaybackOnFirstInteraction);
+        };
+        window.addEventListener("pointerdown", startPlaybackOnFirstInteraction, { once: true });
+        window.addEventListener("keydown", startPlaybackOnFirstInteraction, { once: true });
+      } else {
+        loadTrack(0,true);
+      }
     }
     boot();
   </script>
 </body>
 </html>
- 
