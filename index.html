@@ -758,12 +758,34 @@
     function loadTrack(index,autoplay=false){
       currentTrackIndex=(index+playlist.length)%playlist.length;
       const track=playlist[currentTrackIndex];
-      els.audioPlayer.src=track.src;
+      try{
+        const url = new URL(track.src, location.href).href;
+        console.debug('Loading audio URL:', url);
+        els.audioPlayer.src = url;
+      }catch(err){
+        console.warn('Invalid URL for audio, using raw src:', track.src, err);
+        els.audioPlayer.src = track.src;
+      }
       els.audioPlayer.load();
       els.audioPlayer.muted=false;
       updatePlayerUI();
       if(autoplay){
-        setTimeout(()=>playCurrentTrack(),120);
+        const testUrl = els.audioPlayer.src;
+        try{
+          fetch(testUrl, {method:'HEAD'}).then(res=>{
+            if(res && (res.status===200 || res.status===206)){
+              setTimeout(()=>playCurrentTrack(),120);
+            } else {
+              console.warn('Audio HEAD check failed', res && res.status);
+              toast('Không tải được file nhạc (HTTP '+(res?res.status:'?')+'). Bấm ▶ để thử lại.');
+            }
+          }).catch(err=>{
+            console.warn('Audio HEAD fetch error', err);
+            setTimeout(()=>playCurrentTrack(),120);
+          });
+        }catch(e){
+          setTimeout(()=>playCurrentTrack(),120);
+        }
       }
     }
     async function playCurrentTrack(){
@@ -776,9 +798,10 @@
       }catch(e){
         isPlaying=false;
         updatePlayerUI();
+        console.warn('playCurrentTrack error', e);
         const message = e && e.name === "NotAllowedError"
-          ? "Bấm phát để mở nhạc"
-          : "Không thể phát file nhạc này";
+          ? "Trình duyệt chặn autoplay — bấm ▶ để phát"
+          : (e && e.message) ? ("Lỗi phát nhạc: "+e.message) : "Không thể phát file nhạc này";
         toast(message);
       }
     }
