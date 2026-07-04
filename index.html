@@ -624,14 +624,38 @@
     function toast(message){const el=$("toast");el.textContent=message;el.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove("show"),1900)}
     function vibrate(ms){if(navigator.vibrate) navigator.vibrate(ms)}
 
-    const playlist=[
-      {title:"Tìm em ft. Bảo Anh",artist:"HNGLE / hưng lê",src:"music/hngle-tim-em-ft-bao-anh.mp3"},
-      {title:"Em - Binz (feat. SOOBIN)",artist:"Binz Da Poet",src:"music/em-binz-feat-soobin.mp3"},
-      {title:"Vết thương",artist:"fishy",src:"music/fishy-vet-thuong.mp3"},
-      {title:"Ngày rời chuyến bay",artist:"Minh Huy Official",src:"music/minh-huy-ngay-roi-chuyen-bay-ft-pinny.mp3"},
-      {title:"Trước khi em tồn tại",artist:"Trạm Cảm Xúc",src:"music/truoc-khi-em-ton-tai-piano-version.mp3"},
-      {title:"Buông",artist:"HNGLE / hưng lê",src:"music/hngle-buong.mp3"}
-    ];
+   const playlist=[
+  {
+    title:"Buông",
+    artist:"HNGLE / hưng lê",
+    src:"music/Hngle - Buông Official Music Video - HNGLE _ hưng lê.mp3"
+  },
+  {
+    title:"Trước Khi Em Tồn Tại",
+    artist:"Thắng Việt Anh Cover / Trạm Cảm Xúc",
+    src:"music/Trước Khi Em Tồn Tại (Piano Version) - Thắng Việt Anh Cover (MV Lyric) - Trạm Cảm Xúc.mp3"
+  },
+  {
+    title:"Ngày Rời Chuyến Bay",
+    artist:"Minh Huy ft Pinny",
+    src:"music/Minh Huy - Ngày Rời Chuyến Bay ft Pinny ( Official Music Video ) - Minh Huy Official.mp3"
+  },
+  {
+    title:"Vết Thương",
+    artist:"fishy",
+    src:"music/fishy - VẾT THƯƠNG - OFFICIAL MUSIC VIDEO - fishy.mp3"
+  },
+  {
+    title:"Gặp Lại",
+    artist:"Binz ft. SOOBIN",
+    src:"music/07. Em - Binz (feat. SOOBIN) Gặp Lại Album - Binz Da Poet.mp3"
+  },
+  {
+    title:"Tìm Em ft. Bảo Anh",
+    artist:"HNGLE / hưng lê",
+    src:"music/Hngle - Tim em ft. Bảo Anh Official Music Video - HNGLE _ hưng lê.mp3"
+  }
+];
     let currentTrackIndex=0,isPlaying=false;
     function updatePlayerUI(){const t=playlist[currentTrackIndex]||{};els.trackTitle.textContent=t.title||"Chưa có bài hát";els.trackArtist.textContent=t.artist||"";els.playPauseBtn.textContent=isPlaying?"❚❚":"▶";els.playerDisc.classList.toggle("spin",isPlaying)}
     function loadTrack(index,autoplay=false){currentTrackIndex=(index+playlist.length)%playlist.length;els.audioPlayer.src=playlist[currentTrackIndex].src;updatePlayerUI();if(autoplay)playCurrentTrack()}
