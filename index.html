@@ -213,7 +213,7 @@
       <button id="playPauseBtn" class="player-btn main" type="button" aria-label="Phát hoặc dừng">▶</button>
       <button id="nextTrackBtn" class="player-btn" type="button" aria-label="Bài tiếp theo">›</button>
     </div>
-    <audio id="audioPlayer" preload="metadata" autoplay muted></audio>
+    <audio id="audioPlayer" preload="auto"></audio>
   </div>
 
   <div class="mobile-cta" aria-label="Tác vụ nhanh">
@@ -755,8 +755,33 @@
 ];
     let currentTrackIndex=0,isPlaying=false;
     function updatePlayerUI(){const t=playlist[currentTrackIndex]||{};els.trackTitle.textContent=t.title||"Chưa có bài hát";els.trackArtist.textContent=t.artist||"";els.playPauseBtn.textContent=isPlaying?"❚❚":"▶";els.playerDisc.classList.toggle("spin",isPlaying)}
-    function loadTrack(index,autoplay=false){currentTrackIndex=(index+playlist.length)%playlist.length;els.audioPlayer.src=playlist[currentTrackIndex].src;updatePlayerUI();if(autoplay)playCurrentTrack()}
-    async function playCurrentTrack(){try{await els.audioPlayer.play();isPlaying=true;updatePlayerUI();toast("Đang phát: "+playlist[currentTrackIndex].title)}catch(e){isPlaying=false;updatePlayerUI();toast("Chưa tìm thấy file MP3")}}
+    function loadTrack(index,autoplay=false){
+      currentTrackIndex=(index+playlist.length)%playlist.length;
+      const track=playlist[currentTrackIndex];
+      els.audioPlayer.src=track.src;
+      els.audioPlayer.load();
+      els.audioPlayer.muted=false;
+      updatePlayerUI();
+      if(autoplay){
+        setTimeout(()=>playCurrentTrack(),120);
+      }
+    }
+    async function playCurrentTrack(){
+      try{
+        els.audioPlayer.muted=false;
+        await els.audioPlayer.play();
+        isPlaying=true;
+        updatePlayerUI();
+        toast("Đang phát: "+playlist[currentTrackIndex].title);
+      }catch(e){
+        isPlaying=false;
+        updatePlayerUI();
+        const message = e && e.name === "NotAllowedError"
+          ? "Bấm phát để mở nhạc"
+          : "Không thể phát file nhạc này";
+        toast(message);
+      }
+    }
     function pauseCurrentTrack(){els.audioPlayer.pause();isPlaying=false;updatePlayerUI()}
     function togglePlayback(){isPlaying?pauseCurrentTrack():playCurrentTrack()}
     function prevTrack(){loadTrack(currentTrackIndex-1,isPlaying)}
@@ -782,7 +807,7 @@
       if(els.confirmPaymentBtn) els.confirmPaymentBtn.addEventListener("click",confirmPayment);
       els.railNext.addEventListener("click",()=>els.quickRail.scrollBy({left:360,behavior:"smooth"}));
       els.categoryTab.addEventListener("click",()=>setTimeout(()=>els.chips.scrollIntoView({behavior:"smooth",block:"center"}),20));
-      els.playPauseBtn.addEventListener("click",togglePlayback);els.prevTrackBtn.addEventListener("click",prevTrack);els.nextTrackBtn.addEventListener("click",nextTrack);els.audioPlayer.addEventListener("ended",nextTrack);els.audioPlayer.addEventListener("play",()=>{isPlaying=true;updatePlayerUI()});els.audioPlayer.addEventListener("pause",()=>{isPlaying=false;updatePlayerUI()});els.playlistTopBtn.addEventListener("click",()=>{document.getElementById("musicPlayer").scrollIntoView?.({behavior:"smooth"});toast("Bấm ▶ để phát playlist")});
+      els.playPauseBtn.addEventListener("click",togglePlayback);els.prevTrackBtn.addEventListener("click",prevTrack);els.nextTrackBtn.addEventListener("click",nextTrack);els.audioPlayer.addEventListener("ended",nextTrack);els.audioPlayer.addEventListener("play",()=>{isPlaying=true;updatePlayerUI()});els.audioPlayer.addEventListener("pause",()=>{isPlaying=false;updatePlayerUI()});els.audioPlayer.addEventListener("error",()=>{isPlaying=false;updatePlayerUI();toast("Không thể phát file nhạc này")});els.playlistTopBtn.addEventListener("click",()=>{document.getElementById("musicPlayer").scrollIntoView?.({behavior:"smooth"});toast("Bấm ▶ để phát playlist")});
     }
     async function boot(){
       bindEvents();
